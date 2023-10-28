@@ -26,7 +26,7 @@
 
 /* Styling for matched cards */
 .card.matched {
-  visibility: hidden;
+  /* visibility: hidden;
 }
 
 /* Confetti styling */
