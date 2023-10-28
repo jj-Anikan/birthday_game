@@ -20,7 +20,7 @@ function createConfetti() {
 
   // Create an anchor element with a link inside the confetti
   const confettiLink = document.createElement("a");
-  confettiLink.href = "https://example.com"; // Replace with your desired link
+  confettiLink.href = "https://www.facebook.com/coogans.nyc/videos/lmm-singing-happy-birthday-last-night/1541656815889420/";
   confettiLink.target = "_blank"; // Open link in a new tab
   confettiLink.innerText = "Click me!"; // Text for the link
 
