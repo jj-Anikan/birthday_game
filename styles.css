@@ -76,3 +76,19 @@
   grid-gap: 10px; /* Adjust the gap between cards as needed */
   text-align: center;
 }
+
+
+/* Styling for the confetti link */
+#confetti-link {
+  position: absolute;
+  top: 0; /* Adjust as needed */
+  left: 0; /* Adjust as needed */
+  z-index: 999; /* Ensure it's on top of everything */
+  text-align: center;
+}
+
+#confetti-link a {
+  text-decoration: none;
+  color: #00f; /* Link color */
+  font-size: 18px; /* Adjust as needed */
+}
