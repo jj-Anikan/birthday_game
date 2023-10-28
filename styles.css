@@ -34,7 +34,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  z-index: 2; /* the confetting should be in front of the game board */
+  z-index: 1; /* the confetting should be in front of the game board */
 }
 
 /* Animation for falling confetti */
@@ -54,7 +54,7 @@
   align-items: center;
   height: 100vh; /* This centers the container vertically */
   position: relative;
-  z-index:1;
+  z-index:2;
 }
 
 /* Add some padding to the game board */
