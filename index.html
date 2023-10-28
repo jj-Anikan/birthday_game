@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <div id="game-container">
+    <div id="game-board" class="grid-container">
+      <!-- Your card elements will be generated with JavaScript -->
+    </div>
+  </div>
+  <div id="happy-birthday-message" class="hidden">
+    <h1>Happy Birthday</h1>
+  </div>
+
+  <script>
+    // Array of card images (provide your own image file paths)
+    const cardImages = [
+      "./images/minecraft_pig.jpg",
+      "./images/minecraft_pig.jpg",
+      "./images/aaron_burr.jpg",
+      "./images/aaron_burr.jpg",
+      "./images/jagger.jpg",
+      "./images/jagger.jpg",
+      "./images/peeta_katniss.jpg",
+      "./images/peeta_katniss.jpg"
+    ];
+
+    const gameBoard = document.getElementById("game-board");
+
+    // Function to shuffle the card images
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Function to handle the game win event
+    function handleGameWin() {
+      if (document.querySelectorAll(".matched").length === cards.length) {
+        showBirthdayMessage();
+      }
+    }
+
+    // Create and shuffle the cards
+    const cards = [...cardImages, ...cardImages];
+    shuffleArray(cards);
+
+    // Create card elements and add them to the game board
+    cards.forEach((image, index) => {
+      if (image) { // Check if the image exists
+        const card = document.createElement("div");
+        card.className = "card";
+        card.dataset.image = image;
+        card.dataset.index = index;
+        card.onclick = handleCardClick;
+
+        const cardImage = document.createElement("img");
+        cardImage.src = image; // Set the image source
+        card.appendChild(cardImage);
+        gameBoard.appendChild(card);
+      }
+    });
+
+    // Keep track of the currently selected cards
+    let selectedCards = [];
+
+    // Function to handle card click
+    function handleCardClick() {
+      if (selectedCards.length < 2) {
+        this.classList.add("flipped");
+        selectedCards.push(this);
+        if (selectedCards.length === 2) {
+          setTimeout(checkForMatch, 1000);
+        }
+      }
+    }
+
+    // Function to check if the selected cards are a match
+    function checkForMatch() {
+      if (selectedCards[0].dataset.image === selectedCards[1].dataset.image) {
+        selectedCards[0].classList.add("matched");
+        selectedCards[1].classList.add("matched");
+      } else {
+        selectedCards[0].classList.remove("flipped");
+        selectedCards[1].classList.remove("flipped");
+      }
+      selectedCards = [];
+
+      handleGameWin();
+    }
+  </script>
+  <script src="game_won.js"></script>
+</body>
+
+</html>

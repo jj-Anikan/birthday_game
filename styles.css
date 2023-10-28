@@ -1,0 +1,71 @@
+/* styles.css */
+
+/* Base card styling */
+.card {
+  width: 100px;
+  height: 100px;
+  background-color: #e1e1e1;
+  margin: 10px;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Styling for flipped cards */
+.card.flipped {
+  transform: rotateY(180deg);
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for matched cards */
+.card.matched {
+  visibility: hidden;
+}
+
+/* Confetti styling */
+.confetti {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 2; /* the confetting should be in front of the game board */
+}
+
+/* Animation for falling confetti */
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* Center the game container */
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* This centers the container vertically */
+  z-index:1;
+}
+
+/* Add some padding to the game board */
+#game-board {
+  padding: 20px;
+  z-index: 0; /* Confetti should fall in front of the game board */
+}
+
+/* Adjust the grid size, e.g., 4x4 grid */
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px; /* Adjust the gap between cards as needed */
+  text-align: center;
+}
